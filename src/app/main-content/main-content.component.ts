@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import data from '../../assets/db.json';
 
 @Component({
   selector: 'main-content',

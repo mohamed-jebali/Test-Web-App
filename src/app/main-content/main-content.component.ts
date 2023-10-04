@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../config/config.service';
+import { ConfigService } from '../config/config.service';
 
 @Component({
   selector: 'main-content',
@@ -9,12 +9,31 @@ import { DataService } from '../config/config.service';
 export class MainContentComponent implements OnInit {
   dati: any;
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: ConfigService) { }
 
-  ngOnInit(): void {
+  ngOnInit(){
+    this.viewData()
+  }
+
+  viewData(){
     this.dataService.getData().subscribe(data => {
       this.dati = data;
       console.log(this.dati)
+    });
+  }
+
+  deleteItem(id: number) {
+    this.dataService.deleteData(id).subscribe(() => {
+      // Dopo l'eliminazione, ricarica i dati
+      this.viewData();
+    });
+  }
+  
+
+  editItem(id: number, newData: any) {
+    this.dataService.updateData(id, newData).subscribe(() => {
+      // Dopo l'aggiornamento, ricarica i dati
+      this.viewData();
     });
   }
 }

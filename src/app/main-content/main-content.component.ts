@@ -8,6 +8,7 @@ import { ConfigService } from '../config/config.service';
 })
 export class MainContentComponent implements OnInit {
   dati: any;
+  newData: any;
 
   constructor(private dataService: ConfigService) { }
 

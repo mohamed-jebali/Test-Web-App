@@ -8,6 +8,7 @@ import { MainContentComponent } from './main-content/main-content.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { EditComponent } from './edit/edit.component';
+import { CreateComponent } from './create/create.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { EditComponent } from './edit/edit.component';
     MainContentComponent,
     HeaderComponent,
     FooterComponent,
-    EditComponent
+    EditComponent,
+    CreateComponent
   ],
   imports: [
     BrowserModule,

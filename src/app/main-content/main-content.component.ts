@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../config/config.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'main-content',
@@ -24,17 +25,40 @@ export class MainContentComponent implements OnInit {
   }
 
   deleteItem(id: number) {
-    this.dataService.deleteData(id).subscribe(() => {
-      // Dopo l'eliminazione, ricarica i dati
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You want to delete this User.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Delete',
+      cancelButtonText: 'Cancel'
+
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.dataService.deleteData(id).subscribe(() => {
+          this.viewData();
+
+          const deletedItem = this.dati.find((item: any) => item.id === id);
+
+          if (deletedItem) {
+            this.MessageAlert(deletedItem.nome);
+          }
+        });
+      }
+    });
+  }
+  editItem(id: number, newData: any) {
+    this.dataService.updateData(id, newData).subscribe(() => {
       this.viewData();
     });
   }
-  
 
-  editItem(id: number, newData: any) {
-    this.dataService.updateData(id, newData).subscribe(() => {
-      // Dopo l'aggiornamento, ricarica i dati
-      this.viewData();
+  MessageAlert(id: number){
+    Swal.fire({
+     icon: 'success',
+     title: id + ' has been deleted',
+     showConfirmButton: false,
+     timer: 2000 
     });
   }
 }

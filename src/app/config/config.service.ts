@@ -20,12 +20,12 @@ export class  ConfigService {
     const deleteUrl = `${this.baseUrl}/${id}`;
     return this.http.delete(deleteUrl).pipe(
       catchError((error: any) => {
-        // Handle the error here (e.g., log it or return a specific error message).
         console.error('Delete request failed:', error);
-        throw error; // Rethrow the error to propagate it to the component.
+        throw error;
       })
     );
   }
+  
   
 
   updateData(id: number, newData: any): Observable<any> {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigService } from '../config/config.service';
+import { FormBuilder,FormGroup, FormControl, Validators } from "@angular/forms";
 import Swal from 'sweetalert2';
 
 @Component({
@@ -10,23 +11,22 @@ import Swal from 'sweetalert2';
 })
 export class EditComponent implements OnInit {
   itemId: any;
-  name: string = '';
-  surname: string = '';
-  common: string = '';
-  email: string = '';
-  province: string = '';
-  notes: string = '';
-  item: any = {};
+  item: any = {
+    id: 0,
+    nome: '',
+    cognome: '',
+    email: '',
+    comune: '',
+    provincia: '',
+    note: ''
+  };
 
-  constructor(private route: ActivatedRoute,private dataService: ConfigService) { 
-    this.name = '';
-    this.surname = '';
-    this.email = '';
-    this.common = '';
-    this.province = '';
-    this.notes = '';
-  }
-  
+  editForm!:FormGroup;
+
+
+  constructor(private route: ActivatedRoute, private dataService: ConfigService,private formBuilder: FormBuilder) { }
+
+
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -34,30 +34,27 @@ export class EditComponent implements OnInit {
     });
     this.dataService.getDataById(this.itemId).subscribe(data => {
       this.item = data;
-      this.name = this.item.nome;
-      this.surname = this.item.cognome;
-      this.email = this.item.email;
-      this.common = this.item.comune;
-      this.province = this.item.provincia;
-      this.notes = this.item.note;
+    });
+    this.editForm = this.formBuilder.group({
+      name: [this.item.nome, [
+        Validators.required,
+        Validators.minLength(4),
+      ]],
     });
   }
 
   onSubmit(): void {
-    // Puoi accedere ai dati del modulo tramite this.formData
-
-      const newData = {
-      nome: this.name,
-      cognome: this.surname,
-      email: this.email,
-      comune: this.common,
-      provincia: this.province,
-      note: this.notes,
-      // Aggiungi altri campi qui se necessario
+    const newData = {
+      id: this.itemId,
+      nome: this.item.nome,
+      cognome: this.item.cognome,
+      email: this.item.email,
+      comune: this.item.comune,
+      provincia: this.item.provincia,
+      note: this.item.note
     };
     console.log('Dati del modulo inviati:', this.item);
   
-    // Invia i dati al servizio per l'aggiornamento (utilizza this.itemId per identificare l'elemento da aggiornare)
     this.dataService.updateData(this.itemId, newData).subscribe(() => {
 
         Swal.fire({
@@ -67,11 +64,7 @@ export class EditComponent implements OnInit {
          timer: 2000 
         });
         
-      // Gestisci il completamento dell'aggiornamento, ad esempio, reindirizza l'utente o mostra un messaggio di successo
       console.log('Modifica completata con successo');
     });
   }
-  
-
 }
-

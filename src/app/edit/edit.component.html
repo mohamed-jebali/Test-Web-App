@@ -5,31 +5,40 @@
         <h1 class="text-center mb-3">
           Edit Profile
         </h1>
-        <form (ngSubmit)="onSubmit()">
+        <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
           <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" name="name" aria-describedby="name" [(ngModel)]="name" value="{{item.nome}}">
+            <input type="text" class="form-control" id="name" name="name" aria-describedby="name" [(ngModel)]="item.nome" value="{{item.nome}}"  [(ngModel)]="item.name" #name="ngModel">
+            <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                  class="alert">
+
+                <div *ngIf="name.errors?.['required']">
+                  Name is required.
+                </div>
+                <div *ngIf="name.errors?.['minlength']">
+                  Name must be at least 4 characters long.
+                </div>
+              </div>
           </div>
           <div class="mb-3">
             <label for="surname" class="form-label">Surname</label>
-            <input type="text" class="form-control" id="surname" name="surname" aria-describedby="surname" [(ngModel)]="surname" value="{{item.cognome}}">
+            <input type="text" class="form-control" id="surname" name="surname" aria-describedby="surname" [(ngModel)]="item.cognome" value="{{item.cognome}}">
           </div>
           <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" [(ngModel)]="email" value="{{item.email}}">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" [(ngModel)]="item.email" value="{{item.email}}">
           </div>
           <div class="mb-3">
             <label for="common" class="form-label">Common</label>
-            <input type="text" class="form-control" name="common" id="common" [(ngModel)]="common" value="{{item.comune}}">
+            <input type="text" class="form-control" name="common" id="common" [(ngModel)]="item.comune" value="{{item.comune}}">
           </div>
           <div class="mb-3">
               <label for="province" class="form-label">Province</label>
-              <input type="text" class="form-control" name="province" id="province" [(ngModel)]="province" value="{{item.provincia}}">
+              <input type="text" class="form-control" name="province" id="province" [(ngModel)]="item.provincia" value="{{item.provincia}}">
             </div>
           <div class="mb-3">
               <label for="notes" class="form-label">Notes</label>
-              <textarea class="form-control" id="notes" name="notes" rows="3" [(ngModel)]="notes" value="{{item.note}}"></textarea>
+              <textarea class="form-control" id="notes" name="notes" rows="3" [(ngModel)]="item.note" value="{{item.note}}"></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Edit</button>
         </form>

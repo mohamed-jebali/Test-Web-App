@@ -35,4 +35,9 @@ export class  ConfigService {
     const updateUrl = `${this.baseUrl}/${id}`;
     return this.http.put(updateUrl, newData);
   }
+
+  createData(newData:any): Observable<any>{
+    const createUrl = `${this.baseUrl}`;
+    return this.http.post(createUrl,newData)
+  }
 }

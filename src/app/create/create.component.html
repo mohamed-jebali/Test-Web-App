@@ -5,31 +5,30 @@
           <h1 class="text-center mb-3">
             Create New Profile
           </h1>
-          <form>
+          <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
             <div class="mb-3">
               <label for="name" class="form-label">Name</label>
-              <input type="text" class="form-control" id="name" name="surname" aria-describedby="name">
+              <input type="text" class="form-control" id="name" name="name" aria-describedby="name" formControlName="nome">
             </div>
             <div class="mb-3">
               <label for="surname" class="form-label">Surname</label>
-              <input type="text" class="form-control" id="surname" name="surname" aria-describedby="surname">
+              <input type="text" class="form-control" id="surname" name="surname" aria-describedby="surname" formControlName="cognome">
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" formControlName="email">
             </div>
             <div class="mb-3">
               <label for="common" class="form-label">Common</label>
-              <input type="text" class="form-control" name="common" id="common">
+              <input type="text" class="form-control" name="common" id="common" formControlName="comune">
             </div>
             <div class="mb-3">
                 <label for="province" class="form-label">Province</label>
-                <input type="text" class="form-control" name="province" id="province">
+                <input type="text" class="form-control" name="province" id="province" formControlName="provincia">
               </div>
             <div class="mb-3">
                 <label for="notes" class="form-label">Notes</label>
-                <textarea class="form-control" id="notes" name="notes" rows="3"></textarea>
+                <textarea class="form-control" id="notes" name="notes" rows="3" formControlName="note"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Create New User</button>
           </form>

@@ -47,11 +47,6 @@ export class MainContentComponent implements OnInit {
       }
     });
   }
-  editItem(id: number, newData: any) {
-    this.dataService.updateData(id, newData).subscribe(() => {
-      this.viewData();
-    });
-  }
 
   MessageAlert(id: number){
     Swal.fire({

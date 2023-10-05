@@ -26,8 +26,11 @@ export class  ConfigService {
     );
   }
   
+  getDataById(id: number): Observable<any> {
+    const getUrl = `${this.baseUrl}/${id}`;
+    return this.http.get<any>(getUrl);
+  }
   
-
   updateData(id: number, newData: any): Observable<any> {
     const updateUrl = `${this.baseUrl}/${id}`;
     return this.http.put(updateUrl, newData);

@@ -107,6 +107,15 @@
       "provincia": "NA",
       "email": "antonio.conti@hotmail.com",
       "note": "project manager"
+    },
+    {
+      "id": 12,
+      "nome": "Mohamed",
+      "cognome": "Jebali",
+      "email": "mohamedjebali992010@gmail.com",
+      "comune": "Rimini",
+      "provincia": "RN",
+      "note": "back end developer"
     }
   ]
 }

@@ -7,22 +7,22 @@
         </h1>
         <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
           <div class="mb-3">
-            <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" formControlName="name" [(ngModel)]="item.nome" value="{{item.nome}}">
-            <div *ngIf="editForm.get('name')?.hasError('required') && editForm.get('name')?.touched" class="text-danger">
+            <label for="nome" class="form-label">Name</label>
+            <input type="text" class="form-control" id="nome" formControlName="nome" [(ngModel)]="item.nome" value="{{item.nome}}">
+            <div *ngIf="editForm.get('nome')?.hasError('required') && editForm.get('nome')?.touched" class="text-danger">
               Name is required.
             </div>
-            <div *ngIf="editForm.get('name')?.hasError('minlength') && editForm.get('name')?.touched" class="text-danger">
+            <div *ngIf="editForm.get('nome')?.hasError('minlength') && editForm.get('nome')?.touched" class="text-danger">
               Name must be at least 4 characters long.
             </div>
           </div>
           <div class="mb-3">
-            <label for="surname" class="form-label">Surname</label>
-            <input type="text" class="form-control" id="surname" name="surname" formControlName="surname" aria-describedby="surname" [(ngModel)]="item.cognome" value="{{item.cognome}}">
-            <div *ngIf="editForm.get('surname')?.hasError('required') && editForm.get('surname')?.touched" class="text-danger">
+            <label for="cognome" class="form-label">Surname</label>
+            <input type="text" class="form-control" id="cognome" name="cognome" formControlName="cognome" aria-describedby="cognome" [(ngModel)]="item.cognome" value="{{item.cognome}}">
+            <div *ngIf="editForm.get('cognome')?.hasError('required') && editForm.get('cognome')?.touched" class="text-danger">
               Surname is required.
             </div>
-            <div *ngIf="editForm.get('surname')?.hasError('minlength') && editForm.get('surname')?.touched" class="text-danger">
+            <div *ngIf="editForm.get('cognome')?.hasError('minlength') && editForm.get('cognome')?.touched" class="text-danger">
               Surname must be at least 4 characters long.
             </div>
           </div>
@@ -40,26 +40,26 @@
             </div>
           </div>
           <div class="mb-3">
-            <label for="common" class="form-label">Common</label>
-            <input type="text" class="form-control" name="common" id="common" formControlName="common" [(ngModel)]="item.comune" value="{{item.comune}}">
-            <div *ngIf="editForm.get('common')?.hasError('minlength') && editForm.get('common')?.touched" class="text-danger">
+            <label for="comune" class="form-label">Common</label>
+            <input type="text" class="form-control" name="comune" id="comune" formControlName="comune" [(ngModel)]="item.comune" value="{{item.comune}}">
+            <div *ngIf="editForm.get('comune')?.hasError('minlength') && editForm.get('comune')?.touched" class="text-danger">
               Common must be at least 4 characters long.
             </div>
           </div>
           <div class="mb-3">
-            <label for="province" class="form-label">Province</label>
-            <input type="text" class="form-control" name="province" id="province" formControlName="province" [(ngModel)]="item.provincia" value="{{item.provincia}}">
-            <div *ngIf="editForm.get('province')?.hasError('maxlength') && editForm.get('province')?.touched" class="text-danger"> 
+            <label for="provincia" class="form-label">Province</label>
+            <input type="text" class="form-control" name="provinciae" id="provincia" formControlName="provincia" [(ngModel)]="item.provincia" value="{{item.provincia}}">
+            <div *ngIf="editForm.get('provincia')?.hasError('maxlength') && editForm.get('provincia')?.touched" class="text-danger"> 
               You have exceeded the character limit for province.
             </div>
-            <div *ngIf="editForm.get('province')?.hasError('minlength') && editForm.get('province')?.touched" class="text-danger">
+            <div *ngIf="editForm.get('provincia')?.hasError('minlength') && editForm.get('provincia')?.touched" class="text-danger">
               Province must be at least 2 characters long.
             </div>
           </div>
           <div class="mb-3">
-            <label for="notes" class="form-label">Notes</label>
-            <textarea class="form-control" id="notes" name="notes" rows="3" formControlName="notes" [(ngModel)]="item.note" value="{{item.note}}"></textarea>
-            <div *ngIf="editForm.get('notes')?.hasError('maxlength') && editForm.get('notes')?.touched" class="text-danger">
+            <label for="note" class="form-label">Notes</label>
+            <textarea class="form-control" id="note" name="note" rows="3" formControlName="note" [(ngModel)]="item.note" value="{{item.note}}"></textarea>
+            <div *ngIf="editForm.get('note')?.hasError('maxlength') && editForm.get('note')?.touched" class="text-danger">
               You have exceeded the character limit for Notes.
             </div>
           </div>

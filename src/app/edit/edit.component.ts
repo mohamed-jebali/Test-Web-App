@@ -36,12 +36,12 @@ export class EditComponent implements OnInit {
       this.item = data;
     });
     this.editForm = this.formGroup.group({
-      name: [this.item.nome, [Validators.required, Validators.minLength(4)]],
-      surname: [this.item.cognome, [Validators.required,Validators.minLength(3)]],
+      nome: [this.item.nome, [Validators.required, Validators.minLength(4)]],
+      cognome: [this.item.cognome, [Validators.required,Validators.minLength(3)]],
       email: [this.item.email, [Validators.required, Validators.email,Validators.maxLength(40)]],
-      common: [this.item.comune,[Validators.minLength(4)]],
-      province: [this.item.provincia, [Validators.minLength(2),Validators.maxLength(2)]],
-      notes: [this.item.note,[Validators.maxLength(50)]]
+      comune: [this.item.comune,[Validators.minLength(4)]],
+      provincia: [this.item.provincia, [Validators.minLength(2),Validators.maxLength(2)]],
+      note: [this.item.note,[Validators.maxLength(50)]]
   });
 };
 
@@ -49,19 +49,19 @@ onSubmit(): void {
   if (this.editForm.valid) {
     const newData = {
       id: this.itemId,
-      nome: this.editForm.value.name,
-      cognome: this.editForm.value.surname,
+      nome: this.editForm.value.nome,
+      cognome: this.editForm.value.cognome,
       email: this.editForm.value.email,
-      comune: this.editForm.value.common,
-      provincia: this.editForm.value.province,
-      note: this.editForm.value.notes
+      comune: this.editForm.value.comune,
+      provincia: this.editForm.value.provincia,
+      note: this.editForm.value.note
     };
     console.log('Dati del modulo inviati:', newData);
 
     this.dataService.updateData(this.itemId, newData).subscribe(() => {
       Swal.fire({
         icon: 'success',
-        title: this.editForm.value.name + ' has been updated',
+        title: this.editForm.value.nome + ' has been updated',
         showConfirmButton: false,
         timer: 2000
       });

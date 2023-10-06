@@ -7,7 +7,7 @@
 
 1. Installa Angular CLI globalmente eseguendo il seguente comando:
 
-sudo npm install -g @angular/cli
+- `sudo npm install -g @angular/cli`
 
 
 Sarà richiesta la password per l'installazione.
@@ -16,7 +16,7 @@ Sarà richiesta la password per l'installazione.
 
 2. Crea un nuovo progetto Angular con il seguente comando:
 
-ng new nome-del-tuo-progetto
+- `ng new nome-del-tuo-progetto`
 
 
 Assicurati che il nome del progetto non contenga spazi. Durante la creazione del progetto, verrà richiesto se desideri utilizzare uno stylesheet (CSS, SCSS, LESS, ecc.) e se abilitare il routing di Angular.
@@ -25,13 +25,13 @@ Assicurati che il nome del progetto non contenga spazi. Durante la creazione del
 
 3. Dopo aver creato il progetto, naviga nella directory del progetto e installa i pacchetti npm necessari eseguendo i seguenti comandi:
 
-npm install
-npm install bootstrap
-npm install sweetalert2
+ - `npm install`
+ - `npm install bootstrap`
+ - `npm install sweetalert2`
 
 
 ## Avvio del server di sviluppo
 
 4. Per avviare il server di sviluppo di Angular, esegui il seguente comando:
 
-ng serve
+- `ng serve`

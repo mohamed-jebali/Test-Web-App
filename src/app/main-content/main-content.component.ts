@@ -10,6 +10,9 @@ import Swal from 'sweetalert2';
 export class MainContentComponent implements OnInit {
   dati: any;
   newData: any;
+  inputData: any;
+  selectedField: string = "nome";
+  lowerData: any;
 
   constructor(private dataService: ConfigService) { }
 
@@ -20,9 +23,27 @@ export class MainContentComponent implements OnInit {
   viewData(){
     this.dataService.getData().subscribe(data => {
       this.dati = data;
+      this.lowerData = data;
       console.log(this.dati)
     });
   }
+
+ getFieldData() {
+  if (this.inputData && this.selectedField) {
+    const searchCase = this.inputData.toLowerCase();
+    this.dati = this.lowerData.filter((item: any) =>
+      item[this.selectedField].toLowerCase().includes(searchCase)
+    );
+  }
+}
+
+  
+  handleKeyUp(event: any) {
+  if (event.keyCode === 13) {
+    this.getFieldData();
+  }
+}
+
 
   deleteItem(id: number) {
     Swal.fire({

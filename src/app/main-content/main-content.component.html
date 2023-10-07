@@ -2,6 +2,18 @@
     <div class="container p-5 p-md-0">
         <div *ngIf="dati" class="row justify-content-center flex-wrap" >
             <h2 class="p-5 text-center">STAFF</h2>
+            <div class="input-group mb-3 col-4 col-md-5">
+              <select class="form-select" [(ngModel)]="selectedField">
+                <option value="nome" selected>Nome</option>
+                <option value="cognome">Cognome</option>
+                <option value="email">Email</option>
+                <option value="comune">Comune</option>
+                <option value="provincia">Provincia</option>
+                <option value="note">Note</option>
+              </select>
+              <input type="text" class="form-control" [(ngModel)]="inputData" placeholder="Insert Field to Search" (keyup)="handleKeyUp($event)">
+              <button class="btn btn-primary" (click)="getFieldData()">Search</button>
+            </div>                       
             <div class="card mb-5 p-4 col-12 col-md-5 col-lg-3 mx-2" *ngFor="let item of dati">
                     <div class="card-body">
                       <h5 class="card-title">{{item.nome}} {{item.cognome}}</h5>

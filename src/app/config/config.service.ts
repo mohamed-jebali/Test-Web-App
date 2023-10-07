@@ -10,10 +10,15 @@ export class  ConfigService {
 
   private baseUrl = 'http://localhost:3000/data';
 
+
   constructor(private http: HttpClient) { }
 
   getData(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}`);
+  }
+  getField(field: any,input: any): Observable<any> {
+    const filterUrl = `${this.baseUrl}?${field}=${input}`
+    return this.http.get<any>(filterUrl);
   }
   
   deleteData(id: number): Observable<any> {

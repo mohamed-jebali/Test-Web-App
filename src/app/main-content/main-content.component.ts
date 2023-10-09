@@ -20,6 +20,21 @@ export class MainContentComponent implements OnInit {
     this.viewData()
   }
 
+  sortData() {
+    this.dataService.getData().subscribe(data => {
+      this.dati = data.sort((a: any, b: any) => {
+        const fieldA = a[this.selectedField].toLowerCase();
+        const fieldB = b[this.selectedField].toLowerCase();
+  
+        if (fieldA < fieldB) return -1;
+        if (fieldA > fieldB) return 1;
+        return 0;
+      });
+  
+      this.lowerData = this.dati.slice();
+    });
+  }  
+
   viewData(){
     this.dataService.getData().subscribe(data => {
       this.dati = data;

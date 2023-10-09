@@ -2,6 +2,7 @@
     <div class="container p-5 p-md-0">
         <div *ngIf="dati" class="row justify-content-center flex-wrap" >
             <h2 class="p-5 text-center">STAFF</h2>
+            <div *ngIf="message" class="alert alert-info">{{ message }}</div>
             <div class="input-group mb-3 col-4 col-md-5">
               <select class="form-select" [(ngModel)]="selectedField">
                 <option value="nome" selected>Nome</option>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from "@angular/forms";
 import { ConfigService } from '../config/config.service';
+import { ActivatedRoute} from '@angular/router';
+import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -11,7 +13,7 @@ import Swal from 'sweetalert2';
 export class CreateComponent {
   createForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private dataService: ConfigService) {
+  constructor(private formBuilder: FormBuilder, private dataService: ConfigService,private router :Router,private route: ActivatedRoute ) {
     this.createForm = this.formBuilder.group({
       id: 0,
       nome: ['', [Validators.required, Validators.minLength(4)]],
@@ -41,6 +43,7 @@ export class CreateComponent {
           this.createForm.reset();
         },
       );
+      this.router.navigate([''], { queryParams: { message: `${this.createForm.value.nome} has been created` } });
     }
     else{
         Swal.fire({

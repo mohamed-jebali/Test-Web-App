@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ConfigService } from '../config/config.service';
 import Swal from 'sweetalert2';
 
@@ -13,10 +14,14 @@ export class MainContentComponent implements OnInit {
   inputData: any;
   selectedField: string = "nome";
   lowerData: any;
+  message: string | undefined;
 
-  constructor(private dataService: ConfigService) { }
+  constructor(private dataService: ConfigService, private route : ActivatedRoute) { }
 
   ngOnInit(){
+    this.route.queryParams.subscribe((params: Params) => {
+      this.message = params['message'];
+    });
     this.viewData()
   }
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute,Params} from '@angular/router';
 import { ConfigService } from '../config/config.service';
-import { FormBuilder,FormGroup, FormControl, Validators } from "@angular/forms";
+import { Router } from '@angular/router';
+import { FormBuilder,FormGroup, Validators } from "@angular/forms";
 import Swal from 'sweetalert2';
 
 @Component({
@@ -21,10 +22,11 @@ export class EditComponent implements OnInit {
     note: ''
   };
 
+  response:any
   editForm!:FormGroup;
 
 
-  constructor(private route: ActivatedRoute, private dataService: ConfigService,private formGroup: FormBuilder) { }
+  constructor(private route: ActivatedRoute, private dataService: ConfigService,private formGroup: FormBuilder,private router: Router) { }
 
 
 
@@ -68,6 +70,9 @@ onSubmit(): void {
 
       console.log('Modifica completata con successo');
     });
+
+    this.router.navigate([''], { queryParams: { message: `${this.editForm.value.nome} has been updated`} });
+
   } else {
     Swal.fire({
       icon: 'error',

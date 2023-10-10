@@ -22,7 +22,7 @@ export class EditComponent implements OnInit {
     note: ''
   };
 
-  response:any
+  updatedItem: boolean | undefined
   editForm!:FormGroup;
 
 
@@ -58,7 +58,6 @@ onSubmit(): void {
       provincia: this.editForm.value.provincia,
       note: this.editForm.value.note
     };
-    console.log('Dati del modulo inviati:', newData);
 
     this.dataService.updateData(this.itemId, newData).subscribe(() => {
       Swal.fire({
@@ -68,15 +67,13 @@ onSubmit(): void {
         timer: 2000
       });
 
-      console.log('Modifica completata con successo');
     });
 
-    this.router.navigate([''], { queryParams: { message: `${this.editForm.value.nome} has been updated`} });
-
+    this.router.navigate([''], { queryParams: {updatedItemId:this.itemId} });
   } else {
     Swal.fire({
       icon: 'error',
-      title: 'Invalid credentials. Please check the error messages.',
+      title: 'Invalid credentials. Please check the errors messages.',
       showConfirmButton: false,
       timer: 2000
     });

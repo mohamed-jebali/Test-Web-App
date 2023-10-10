@@ -38,12 +38,14 @@ export class CreateComponent {
             timer: 2000
           });
 
-          console.log('Nuovo profilo creato:', response);
 
           this.createForm.reset();
         },
       );
-      this.router.navigate([''], { queryParams: { message: `${this.createForm.value.nome} has been created` } });
+
+      const createdId = newData.id;
+
+      this.router.navigate([''], { queryParams: { message: `${this.createForm.value.nome} ${this.createForm.value.cognome} has been created`,createdId:createdId } });
     }
     else{
         Swal.fire({
@@ -52,7 +54,6 @@ export class CreateComponent {
           showConfirmButton: false,
           timer: 2000
         });
-        console.error('Errore durante la creazione del profilo:');
     }
   }
 }

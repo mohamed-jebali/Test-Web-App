@@ -1,20 +1,19 @@
 <div class="header">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-lg bg-white fixed-top" data-bs-theme="dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
+          <a class="navbar-brand" href="#">
+            <img class="d-none d-md-block" src="../../assets/img/develop-brand.jpg" alt="brand-logo">
+            <img class="d-md-none" title="go to homepage" src="../../assets/img/develop-brand-mobile-size.jpg" alt="brand-logo">
+          </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <i class="fa-solid fa-bars fa-xl navbar-toggler-icon-custom" title="click to dropdown menu"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-              <a class="nav-link" [routerLink]="['create']">Create</a>
-              <a class="nav-link" href="#">Pricing</a>
+            <div class="navbar-nav p-2 text-center">
+              <a class="nav-link" aria-current="page" href="#">HomePage</a>
+              <a class="nav-link" [routerLink]="['create']">Create Profile</a>
             </div>
           </div>
         </div>
       </nav>
 </div>
-
-
-<!-- a class="btn btn-primary me-2" [routerLink]="['/edit', item.id]">Edit</a> -->

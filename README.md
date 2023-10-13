@@ -34,4 +34,6 @@ Assicurati che il nome del progetto non contenga spazi. Durante la creazione del
 
 4. Per avviare il server di sviluppo di Angular, esegui il seguente comando:
 
-- `ng serve`
+- `json-server --watch src/assets/db.json` // runnare il file json in:  http://localhost:3000/data
+
+- `ng serve` // runnare il server in locale : http://localhost:4200
